@@ -1,0 +1,20 @@
+{
+  "name": "hook-webpack-plugin",
+  "version": "0.0.0-dev",
+  "description": "A hook injector designed for your Webpack config.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Alexis Puga Ruíz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexisPuga/hook-webpack-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlexisPuga/hook-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/AlexisPuga/hook-webpack-plugin#readme"
+}
