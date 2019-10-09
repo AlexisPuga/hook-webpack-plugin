@@ -4,7 +4,10 @@
   "description": "A hook injector designed for your Webpack config.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap test/tap/*.test.js",
+    "dev": "npm run test -- --watch",
+    "lint": "eslint . --cache",
+    "pretest": "npm run lint"
   },
   "keywords": [],
   "author": "Alexis Puga Ruíz",
@@ -16,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/AlexisPuga/hook-webpack-plugin/issues"
   },
-  "homepage": "https://github.com/AlexisPuga/hook-webpack-plugin#readme"
+  "homepage": "https://github.com/AlexisPuga/hook-webpack-plugin#readme",
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "tap": "^14.6.9",
+    "webpack": "^4.41.0"
+  }
 }

@@ -1,13 +1,14 @@
 /** A hook injector for Webpack. */
-export default class HookWebpackPlugin {
-
+module.exports = class HookWebpackPlugin {
     /**
      * @typedef {!object} options
      * @property {boolean} [sync=false]
      * @property {string} [pluginName='HookWebpackPlugin']
      */
-    
+
     /**
+     * The listener for the hook.
+     *
      * @typedef {function} hookFn
      * @this HookWebpackPlugin
      * @param {...*} args - The hook arguments.
@@ -19,58 +20,80 @@ export default class HookWebpackPlugin {
      *     - https://webpack.js.org/api/compiler-hooks/
      *     - https://webpack.js.org/api/compilation-hooks/
      * Keep in mind that compilation hooks are expected to be inside a compiler hook.
-     * @typedef {string} hookName 
+     * @typedef {string} hookName
      */
 
     /**
      * The Compiler or Compilation instance from Webpack.
      * @typedef {Compiler|Compilation} webpackContext
      */
-    
+
     /**
-     * @param {!hookName} hookName
-     * @param {!hookFn} hookFn
-     * @param {?options} opts
+     * @param {!hookName} hookName - A compiler/compilation hook.
+     * @param {!hookFn} hookFn - Some function.
+     * @param {?options} opts - Some options.
+     *
+     * @example <caption>Using compiler hooks</caption>
+     * // webpack.config.js
+     * plugins: [
+     *     new HookWebpackPlugin('shouldEmit', function (compilation) {
+     *         return false;
+     *     }),
+     *     new HookWebpackPlugin('emit', function (compilation) {
+     *         // Never got called.
+     *     })
+     * ]
+     *
+     * @example <caption>Using compilation hooks</caption>
+     * // webpack.config.js
+     * plugins: [
+     *     new HookWebpackPlugin('compilation', function (compilation) {
+     *         new HookWebpackPlugin('buildModule', function (module) {
+     *             // ...
+     *         }).apply(compilation);
+     *     })
+     * ]
      */
     constructor (hookName, hookFn, opts) {
+        const options = Object.freeze({
+            'sync': false,
+            'pluginName': 'HookWebpackPlugin',
+            ...opts
+        });
+
+        if (typeof hookName !== 'string') {
+            throw new TypeError('1st argument must be a string.');
+        }
+
+        if (typeof hookFn !== 'function') {
+            throw new TypeError('2nd argument must be a function.');
+        }
+
         Object.defineProperties(this, {
             /** @type {string} */
-            hookName,
+            'hookName': {
+                'value': hookName
+            },
             /** @type {hookFn} */
-            hookFn,
+            'hookFn': {
+                'value': hookFn
+            },
             /** @type {options} */
-            options: Object.assign({
-                sync: false,
-                pluginName: 'HookWebpackPlugin'
-            }, opts),
-            /**
-             * @type {webpackContext}
-             * @private
-             */
-            _webpackContext: null
+            'options': {
+                'value': options
+            }
         });
     }
 
     /**
-     * Update {@link webpackContext} and {@link inject} a Compiler hook.
-     * Required for webpack.
-     * @param {Compiler|Compilation} webpackContext
-     */
-    apply (webpackContext) {
-        this.webpackContext = webpackContext;
-        this.inject(this);
-    }
-
-    /**
-     * Use `tap` or `tapPromise` to inject a hook during the compilation process.
+     * Use `tap` or `tapAsync` to inject a hook during the compilation process.
      *
-     * @param {HookWebpackPlugin} hookWebpackPlugin
+     * @param {Compiler|Compilation} webpackContext
      * @chainable
      */
-    inject (hookWebpackPlugin) {
+    apply (webpackContext) {
         const {hookName, hookFn, options} = this;
         const {pluginName, sync} = options;
-        const {webpackContext} = hookWebpackPlugin._(privateKey);
         const hook = webpackContext.hooks[hookName];
         const isSyncOperation = /^Sync/.test(hook.constructor.name) || sync;
 
@@ -78,10 +101,9 @@ export default class HookWebpackPlugin {
             hook.tap(pluginName, (...args) => hookFn.apply(this, args));
         }
         else {
-            hook.tapPromise(pluginName, async (...args) => await hookFn.apply(this, args));
+            hook.tapAsync(pluginName, (...args) => hookFn.apply(this, args));
         }
 
         return this;
     }
-
-}
+};
