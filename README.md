@@ -7,7 +7,8 @@ Create, intercept and/or extend the functionality of any plugin by using hooks f
 ## Installation
 [![NPM](https://nodei.co/npm/hook-webpack-plugin.png?compact=true)](https://npmjs.org/package/hook-webpack-plugin)
 
-``` npm i hook-webpack-plugin ```
+**Via npm: ** ``` npm i hook-webpack-plugin ```
+**Via yarn: ** ``` yarn add hook-webpack-plugin --dev ```
 
 ## Usage
 Add something like the following to your config file, in the plugin section (*see the wiki for more details.*):
