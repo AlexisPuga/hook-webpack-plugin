@@ -18,8 +18,6 @@ workflows:
           filters:
             tags:
               only: /^v[0-9]/
-            branches:
-              only: /^releases\//
 jobs:
   build:
     <<: *defaults
