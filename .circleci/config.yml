@@ -6,6 +6,7 @@ defaults: &defaults
   environment:
     REPO: hook-webpack-plugin
     NPM_VERSION: 6.11.3
+    COVERALLS_SERVICE_NAME: circleci
   working_directory: ~/hook-webpack-plugin
 
 workflows:
@@ -39,7 +40,7 @@ jobs:
             fi
       - run:
           name: 'Test'
-          command: COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} npm test
+          command: npm test
       - save_cache:
           name: 'Save node_modules cache'
           key: node_modules-{{ .Branch }}-{{ checksum "package-lock.json" }}
