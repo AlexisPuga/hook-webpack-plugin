@@ -5,7 +5,9 @@
 Create, intercept and/or extend the functionality of any plugin by using hooks from your config file.
 
 ## Installation
-[![NPM](https://nodei.co/npm/hook-webpack-plugin.png)](https://npmjs.org/package/hook-webpack-plugin)
+[![NPM](https://nodei.co/npm/hook-webpack-plugin.png?compact=true)](https://npmjs.org/package/hook-webpack-plugin)
+
+``` npm i hook-webpack-plugin ```
 
 ## Usage
 Add something like the following to your config file, in the plugin section (*see the wiki for more details.*):
@@ -22,8 +24,7 @@ plugins: [
 ```
 
 ## Examples
-### Creating a plugin
-Create a plugin easily. 
+**Creating a plugin**:
 ```js
 // webpack.config.js
 plugins: [
@@ -32,8 +33,7 @@ plugins: [
     })
 ]
 ```
-### Registering a plugin
-By default, the name of the plugin will be "HookWebpackPlugin" but you can modify it.
+**Registering a plugin**\*:
 ```js
 // webpack.config.js
 plugins: [
@@ -42,8 +42,8 @@ plugins: [
     }, {pluginName: 'MyAwesomePlugin'})
 ]
 ```
-### Intercepting another plugin
-To intercept another plugin, <var>pluginName</var> must match the name of the plugin given in the source code.
+**\***: By default, the name of the plugin will be "HookWebpackPlugin" but you can modify it.
+**Intercepting another plugin**\*:
 ```js
 // webpack.config.js
 plugins: [
@@ -53,6 +53,7 @@ plugins: [
     }, {'pluginName': 'ThirdPartyPlugin'}) // Intercept it.
 ]
 ```
+**\***: To intercept another plugin, <var>pluginName</var> must match the name of the plugin given in the source code.
 
 ## License
 MIT
