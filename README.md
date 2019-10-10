@@ -1,6 +1,6 @@
 <p>
-    <a href='https://coveralls.io/github/AlexisPuga/hook-webpack-plugin?branch=master'><img src='https://coveralls.io/repos/github/AlexisPuga/hook-webpack-plugin/badge.svg?branch=master' alt='Coverage Status'/></a>
-    <a href='https://circleci.com/gh/AlexisPuga/hook-webpack-plugin'><img align='right' src='https://circleci.com/gh/AlexisPuga/hook-webpack-plugin.svg?style=svg' alt='CircleCI'/></a>
+    <a href='https://coveralls.io/github/AlexisPuga/hook-webpack-plugin?branch=master' target='_blank'><img src='https://coveralls.io/repos/github/AlexisPuga/hook-webpack-plugin/badge.svg?branch=master' alt='Coverage Status'/></a>
+    <a href='https://circleci.com/gh/AlexisPuga/hook-webpack-plugin' target='_blank'><img align='right' src='https://circleci.com/gh/AlexisPuga/hook-webpack-plugin.svg?style=svg' alt='CircleCI'/></a>
 </p>
 
 <br/>
@@ -71,7 +71,7 @@ plugins: [
 
 ### Registering a plugin
 
-By default, the name of the plugin will be "HookWebpackPlugin" but you can modify it.
+By default, the name of the plugin will be `"HookWebpackPlugin"` but you can modify it.
 
 ```js
 // webpack.config.js
@@ -86,7 +86,7 @@ plugins: [
 
 ### Intercepting another plugin
 
-To intercept another plugin, <var>pluginName</var> must match the name of the plugin given in the source code.
+To intercept another plugin, `pluginName` must match the name of the plugin given in the source code.
 
 ```js
 // webpack.config.js
