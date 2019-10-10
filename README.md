@@ -1,13 +1,11 @@
 # Hook - webpack plugin
 
-[![CircleCI](https://circleci.com/gh/AlexisPuga/hook-webpack-plugin.svg?style=svg)](https://circleci.com/gh/AlexisPuga/hook-webpack-plugin) [![Coverage Status](https://coveralls.io/repos/github/AlexisPuga/hook-webpack-plugin/badge.svg?branch=master)](https://coveralls.io/github/AlexisPuga/hook-webpack-plugin?branch=master)
+[![CircleCI](https://circleci.com/gh/AlexisPuga/hook-webpack-plugin.svg?style=svg)](https://circleci.com/gh/AlexisPuga/hook-webpack-plugin) [![Coverage Status](https://coveralls.io/repos/github/AlexisPuga/hook-webpack-plugin/badge.svg?branch=master)](https://coveralls.io/github/AlexisPuga/hook-webpack-plugin?branch=master) 
 
 Create, intercept and/or extend the functionality of any plugin by using hooks from your config file.
 
 ## Installation
-```
-npm i hook-webpack-plugin
-```
+[![NPM](https://nodei.co/npm/hook-webpack-plugin.png)](https://npmjs.org/package/hook-webpack-plugin)
 
 ## Usage
 Add something like the following to your config file, in the plugin section (*see the wiki for more details.*):
