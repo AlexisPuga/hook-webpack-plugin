@@ -1,7 +1,7 @@
 {
   "name": "hook-webpack-plugin",
   "title": "Hook - webpack plugin",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-dev",
   "description": "A hook injector designed for your webpack config.",
   "main": "src/HookWebpackPlugin.js",
   "scripts": {
