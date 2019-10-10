@@ -3,6 +3,8 @@
     <a href='https://circleci.com/gh/AlexisPuga/hook-webpack-plugin' target='_blank'><img align='right' src='https://circleci.com/gh/AlexisPuga/hook-webpack-plugin.svg?style=svg' alt='CircleCI'/></a>
 </p>
 
+<br/>
+
 ## Hook - webpack plugin
 
 **Create** custom plugins from your config file and avoid loosing time finding or maintaining a simple plugin.
