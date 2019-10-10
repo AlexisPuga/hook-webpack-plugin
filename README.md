@@ -3,9 +3,7 @@
     <a href='https://circleci.com/gh/AlexisPuga/hook-webpack-plugin' target='_blank'><img align='right' src='https://circleci.com/gh/AlexisPuga/hook-webpack-plugin.svg?style=svg' alt='CircleCI'/></a>
 </p>
 
-<br/>
-
-<h2 align='center'>Hook - webpack plugin</h2>
+## Hook - webpack plugin
 
 **Create** custom plugins from your config file and avoid loosing time finding or maintaining a simple plugin.
 
@@ -71,7 +69,7 @@ plugins: [
 
 ### Registering a plugin
 
-By default, the name of the plugin will be `"HookWebpackPlugin"` but you can modify it.
+*By default, the name of the plugin will be "HookWebpackPlugin" but you can modify it.*
 
 ```js
 // webpack.config.js
@@ -86,16 +84,16 @@ plugins: [
 
 ### Intercepting another plugin
 
-To intercept another plugin, `pluginName` must match the name of the plugin given in the source code.
+*To intercept another plugin, `pluginName` must match the name of the plugin given in the source code.*
 
 ```js
 // webpack.config.js
 
 plugins: [
-    new ThirdPartyPlugin(options), // Call another plugin.
+    new ThirdPartyPlugin(options),
     new HookWebpackPlugin(hookName, () => {
-        // Add functionalities, log or fix something, etc.
-    }, {'pluginName': 'ThirdPartyPlugin'}) // Intercept it.
+        // Your code...
+    }, {'pluginName': 'ThirdPartyPlugin'})
 ]
 
 ```
