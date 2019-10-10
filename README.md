@@ -1,4 +1,8 @@
-# Hook [webpack plugin]
+# Hook - webpack plugin
+
+| Status | [![CircleCI](https://circleci.com/gh/AlexisPuga/hook-webpack-plugin.svg?style=svg)](https://circleci.com/gh/AlexisPuga/hook-webpack-plugin) |
+| ------ | ---------- |
+
 Create, intercept and/or extend the functionality of any plugin by using hooks from your config file.
 
 ## Installation
