@@ -14,11 +14,11 @@ workflows:
     jobs:
       - build
       - deploy
-        filters:
-          tags:
-            only: /^v[0-9]/
-          branches:
-            only: /^releases\//
+          filters:
+            tags:
+              only: /^v[0-9]/
+            branches:
+              only: /^releases\//
 jobs:
   build:
     <<: *defaults
