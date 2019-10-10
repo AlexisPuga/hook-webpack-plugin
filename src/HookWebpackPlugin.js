@@ -1,9 +1,9 @@
-/** A hook injector for Webpack. */
-module.exports = class HookWebpackPlugin {
+/** A hook injector for Webpack config. */
+class HookWebpackPlugin {
     /**
      * @typedef {!object} options
      * @property {boolean} [sync=false]
-     * @property {string} [pluginName='HookWebpackPlugin']
+     * @property {string} [pluginName=HookWebpackPlugin]
      */
 
     /**
@@ -36,10 +36,10 @@ module.exports = class HookWebpackPlugin {
      * @example <caption>Using compiler hooks</caption>
      * // webpack.config.js
      * plugins: [
-     *     new HookWebpackPlugin('shouldEmit', function (compilation) {
+     *     new HookWebpackPlugin('shouldEmit', function compilerHook (compilation) {
      *         return false;
      *     }),
-     *     new HookWebpackPlugin('emit', function (compilation) {
+     *     new HookWebpackPlugin('emit', function compilerHook (compilation) {
      *         // Never got called.
      *     })
      * ]
@@ -47,11 +47,18 @@ module.exports = class HookWebpackPlugin {
      * @example <caption>Using compilation hooks</caption>
      * // webpack.config.js
      * plugins: [
-     *     new HookWebpackPlugin('compilation', function (compilation) {
-     *         new HookWebpackPlugin('buildModule', function (module) {
+     *     new HookWebpackPlugin('emit', function compilerHook (compilation) {
+     *         new HookWebpackPlugin('seal', function compilationHook (module) {
      *             // ...
      *         }).apply(compilation);
      *     })
+     * ]
+     *
+     * @example <caption>[Beta] Intercepting another plugin</caption>
+     * // webpack.config.js
+     * plugins: [
+     *     new HookWebpackPlugin('shouldEmit', () => false, {'pluginName': 'ThirdPartyPlugin'}),
+     *     new ThirdPartyPlugin(options) // Never emitted.
      * ]
      */
     constructor (hookName, hookFn, opts) {
@@ -106,4 +113,6 @@ module.exports = class HookWebpackPlugin {
 
         return this;
     }
-};
+}
+
+module.exports = HookWebpackPlugin;
