@@ -7,8 +7,7 @@
     "test": "tap test/tap/*.test.js",
     "dev": "npm run test -- --watch",
     "lint": "eslint . --cache",
-    "pretest": "npm run lint",
-    "posttest": "tap --coverage-report=text-lcov"
+    "pretest": "npm run lint"
   },
   "keywords": [
     "webpack-plugin"
