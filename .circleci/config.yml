@@ -69,7 +69,6 @@ jobs:
       - *restore_node_modules
       - run:
           name: 'Publish to NPM'
-          command: 'echo "Testing job..." && npm pack'
-        #  command: |
-        #    npm set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
-        #    npm publish
+          command: |
+            npm set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+            npm publish
