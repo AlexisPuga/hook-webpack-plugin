@@ -9,28 +9,37 @@ defaults: &defaults
     COVERALLS_SERVICE_NAME: circleci
   working_directory: ~/hook-webpack-plugin
 
+restore_node_modules: &restore_node_modules
+  - restore_cache:
+      name: 'Restore node_modules cache'
+      keys:
+        - node_modules-{{ .Branch }}-{{ checksum "package-lock.json" }}
+        - node_modules-{{ .Branch }}-
+        - node_modules-
+
 workflows:
   version: 2
-  build-and-deploy:
+  build-test-and-publish:
     jobs:
       - build
-      - deploy:
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - publish:
           requires:
             - build
           filters:
             tags:
-              only: /^v[0-9].+/
+              only: /^v[0-9].*/
 jobs:
   build:
     <<: *defaults
     steps:
       - checkout
-      - restore_cache:
-          name: 'Restore node_modules cache'
-          keys:
-            - node_modules-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - node_modules-{{ .Branch }}-
-            - node_modules-
+      <<: *restore_node_modules
       - run:
           name: 'Install dependencies'
           command: |
@@ -38,20 +47,27 @@ jobs:
               sudo npm install -g npm@${NPM_VERSION}
               npm ci
             fi
-      - run:
-          name: 'Test'
-          command: npm test
       - save_cache:
           name: 'Save node_modules cache'
           key: node_modules-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
-  deploy:
+  test:
     <<: *defaults
     steps:
       - checkout
+      <<: *restore_node_modules
+      - run:
+          name: 'Test'
+          command: npm test
+  publish:
+    <<: *defaults
+    steps:
+      - checkout
+      <<: *restore_node_modules
       - run:
           name: 'Publish to NPM'
-          command: |
-            npm set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
-            npm publish
+          command: 'echo "Testing job..." && npm pack'
+        #  command: |
+        #    npm set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+        #    npm publish
