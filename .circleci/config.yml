@@ -13,7 +13,7 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - deploy
+      - deploy:
           filters:
             tags:
               only: /^v[0-9]/
