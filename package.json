@@ -1,7 +1,7 @@
 {
   "name": "hook-webpack-plugin",
   "version": "0.0.0-dev",
-  "description": "A hook injector designed for your Webpack config.",
+  "description": "A hook injector designed for your webpack config.",
   "main": "index.js",
   "scripts": {
     "test": "tap test/tap/*.test.js",
@@ -9,7 +9,9 @@
     "lint": "eslint . --cache",
     "pretest": "npm run lint"
   },
-  "keywords": [],
+  "keywords": [
+    "webpack-plugin"
+  ],
   "author": "Alexis Puga Ruíz",
   "license": "MIT",
   "repository": {
