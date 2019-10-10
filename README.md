@@ -6,7 +6,6 @@
 <br/>
 
 <h2 align='center'>Hook - webpack plugin</h2>
-<p align='center'>A hook injector designed for your webpack config.</p>
 
 **Create** custom plugins from your config file and avoid loosing time finding or maintaining a simple plugin.
 
