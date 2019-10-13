@@ -20,6 +20,7 @@
     - [Creating a plugin](#creating-a-plugin)
     - [Registering a plugin](#registering-a-plugin)
     - [Intercepting another plugin](#intercepting-another-plugin)
+- [More info](#more-info)
 - [License](#license)
 
 ## Installation
@@ -53,6 +54,38 @@ plugins: [
 // ...
 
 ```
+Then, replace the following values:
+
+<dl>
+    <dt><var>hookName</var>: string</dt>
+    <dd>The name of a <a href='https://webpack.js.org/api/compiler-hooks/' target='_blank'/>compiler</a>/<a href='https://webpack.js.org/api/compilation-hooks/' target='_blank'>compilation</a> hook. <i>Something like "emit", "done", ...</i></dd>
+    <dt><var>hookFn</var>: function</dt>
+    <dd>The listener for the hook.</dd>
+    <dt><var>options</var>: object<sub>opt</sub></dt>
+    <dd>
+        <table>
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>sync</th>
+                    <td>false [async when possible]</td>
+                    <td>If a truthy value is given use `tap`, otherwise use `tapAsync`.</td>
+                </tr>
+                <tr>
+                    <th>pluginName</th>
+                    <td>HookWebpackPlugin</td>
+                    <td>Value to use in tap/tapAsync methods.</td>
+                </tr>
+            </tbody>
+        </table>
+    </dd>
+</dl>
 
 ## Examples
 
@@ -71,22 +104,21 @@ plugins: [
 
 ### Registering a plugin
 
-*By default, the name of the plugin will be "HookWebpackPlugin" but you can modify it.*
+*Name your plugin and group multiple hooks together, internally.*
 
 ```js
 // webpack.config.js
 
 plugins: [
-    new HookWebpackPlugin(hookName, function compilerHook (...args) {
-        // ...
-    }, {pluginName: 'MyAwesomePlugin'})
+    new HookWebpackPlugin(hookName, compilerHook, {pluginName: 'MyAwesomePlugin'}),
+    new HookWebpackPlugin(anotherHookName, anotherCompilerHook, {pluginName: 'MyAwesomePlugin'})
 ]
 
 ```
 
 ### Intercepting another plugin
 
-*To intercept another plugin, `pluginName` must match the name of the plugin given in the source code.*
+*Set the `pluginName` option to the internal name of the plugin you want to intercept.*
 
 ```js
 // webpack.config.js
@@ -99,6 +131,10 @@ plugins: [
 ]
 
 ```
+
+## More info
+
+Check the [docs](https://github.com/AlexisPuga/hook-webpack-plugin/wiki) for more details.
 
 ## License
 hook-webpack-plugin is [MIT licensed](./LICENSE).

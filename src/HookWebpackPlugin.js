@@ -1,6 +1,8 @@
 /** A hook injector for Webpack config. */
 class HookWebpackPlugin {
     /**
+     * Options for {@link HookWebpackPlugin}.
+     *
      * @typedef {!object} options
      * @property {boolean} [sync=false]
      * @property {string} [pluginName=HookWebpackPlugin]
@@ -15,11 +17,12 @@ class HookWebpackPlugin {
      */
 
     /**
-     * A valid compiler/compilation hook, like "done"...
-     *     See:
-     *     - https://webpack.js.org/api/compiler-hooks/
-     *     - https://webpack.js.org/api/compilation-hooks/
-     * Keep in mind that compilation hooks are expected to be inside a compiler hook.
+     * A valid compiler/compilation hook, like "done"... See:
+     * <ul>
+     *     <li><a href='https://webpack.js.org/api/compiler-hooks/' target='_blank'>Compiler hooks</a>.</li>
+     *     <li><a href='https://webpack.js.org/api/compilation-hooks/' target='_blank'>Compilation hooks</a>.</li>
+     * </ul>
+     * <em>Keep in mind that compilation hooks are expected to be inside a compiler hook.</em>
      * @typedef {string} hookName
      */
 
@@ -29,9 +32,9 @@ class HookWebpackPlugin {
      */
 
     /**
-     * @param {!hookName} hookName - A compiler/compilation hook.
-     * @param {!hookFn} hookFn - Some function.
-     * @param {?options} opts - Some options.
+     * @param {!hookName} hookName - The name of a compiler/compilation hook.
+     * @param {!hookFn} hookFn - The listener for the hook.
+     * @param {options} [opts] - Some options.
      *
      * @example <caption>Using compiler hooks</caption>
      * // webpack.config.js
@@ -77,15 +80,15 @@ class HookWebpackPlugin {
         }
 
         Object.defineProperties(this, {
-            /** @type {string} */
+            /** @member {string} */
             'hookName': {
                 'value': hookName
             },
-            /** @type {hookFn} */
+            /** @member {hookFn} */
             'hookFn': {
                 'value': hookFn
             },
-            /** @type {options} */
+            /** @member {options} */
             'options': {
                 'value': options
             }
