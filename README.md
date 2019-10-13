@@ -134,7 +134,7 @@ plugins: [
 
 ## More info
 
-Check the [docs](/wiki) for more details.
+Check the [docs](https://github.com/AlexisPuga/hook-webpack-plugin/wiki) for more details.
 
 ## License
 hook-webpack-plugin is [MIT licensed](./LICENSE).
