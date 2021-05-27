@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/AlexisPuga/hook-webpack-plugin#readme",
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "tap": "^14.10.6",
-    "webpack": "^4.42.0"
+    "eslint": "^7.27.0",
+    "tap": "^15.0.9",
+    "webpack": "^5.37.1"
   }
 }

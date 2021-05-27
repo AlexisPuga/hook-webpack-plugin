@@ -68,7 +68,8 @@ module.exports = {
         'eqeqeq': 'error',
         'func-call-spacing': 'error',
         'func-name-matching': 'error',
-        'func-names': 'off', // 'error'
+        // 'func-names': 'error',
+        'func-names': 'off',
         'func-style': 'error',
         'function-paren-newline': 'error',
         'generator-star-spacing': 'error',
@@ -76,7 +77,8 @@ module.exports = {
         'guard-for-in': 'error',
         'handle-callback-err': 'error',
         'id-blacklist': 'error',
-        'id-length': 'off', // error
+        // 'id-length': 'error',
+        'id-length': 'off',
         'id-match': 'error',
         'implicit-arrow-linebreak': [
             'error',
@@ -103,7 +105,8 @@ module.exports = {
         'max-depth': 'error',
         'max-len': 'off',
         'max-lines': 'error',
-        'max-lines-per-function': 'off', // error
+        // 'max-lines-per-function': 'error',
+        'max-lines-per-function': 'off',
         'max-nested-callbacks': 'error',
         'max-params': 'error',
         'max-statements': 'error',
