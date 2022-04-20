@@ -30,7 +30,7 @@
   "homepage": "https://github.com/AlexisPuga/hook-webpack-plugin#readme",
   "devDependencies": {
     "eslint": "^7.27.0",
-    "tap": "^15.0.9",
+    "tap": "^16.0.1",
     "webpack": "^5.37.1"
   }
 }
