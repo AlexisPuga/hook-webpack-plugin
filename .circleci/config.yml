@@ -2,7 +2,7 @@ version: 2
 
 defaults: &defaults
   docker:
-    - image: circleci/node:10.16.3
+    - image: cimg/node:17.9.0
   environment:
     REPO: hook-webpack-plugin
     NPM_VERSION: 6.11.3
