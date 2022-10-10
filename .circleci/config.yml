@@ -49,7 +49,6 @@ jobs:
           name: 'Install dependencies'
           command: |
             if [ ! -d node_modules ]; then
-              sudo npm install -g npm@${NPM_VERSION}
               npm ci
             fi
       - save_cache:
